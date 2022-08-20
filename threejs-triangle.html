@@ -76,15 +76,10 @@
     renderer.setSize(screen_width, screen_height);
     renderer.autoClear = false;
 
-    draw();
-
-    function draw() {
-      requestAnimationFrame(draw);
-
-      renderer.clear();
-      renderer.setViewport(0, 0, screen_width, screen_height);
-      renderer.render(scene, camera);
-    }
+    renderer.clear();
+    renderer.setViewport(0, 0,
+      screen_width, screen_height);
+    renderer.render(scene, camera);
   </script>
 
 </body>
