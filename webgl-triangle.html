@@ -27,13 +27,6 @@
     canvas.height = screen_height;
     let gl = canvas.getContext('webgl2');
 
-    // define vertices
-    let vertices = [
-      -0.5, -0.5, 0.0,
-      0.5, -0.5, 0.0,
-      0.0, 0.5, 0.0
-    ];
-
     let vertShaderSource = `#version 300 es
       in vec3 a_position;
       void main() {
@@ -55,6 +48,13 @@
     gl.deleteShader(fragShader);
 
     let positionAttributeLocation = gl.getAttribLocation(program, 'a_position');
+    // define vertices
+    let vertices = [
+      -0.5, -0.5, 0.0,
+      0.5, -0.5, 0.0,
+      0.0, 0.5, 0.0
+    ];
+
     let positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);

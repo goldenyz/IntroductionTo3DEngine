@@ -37,20 +37,11 @@
     canvas.width = screen_width;
     canvas.height = screen_height;
 
-    let vertices = [
-      -0.5, -0.5, 0.0,
-      0.5, -0.5, 0.0,
-      0.0, 0.5, 0.0
-    ];
-
     let camera = new THREE.PerspectiveCamera(60, screen_width / screen_height, 0.01, 3500);
     camera.position.z = 1;
 
     let scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
-
-    let geometry = new THREE.BufferGeometry;
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
     let shaderMaterial = new THREE.ShaderMaterial({
       uniforms: {},
@@ -66,6 +57,14 @@
       `,
     });
 
+    let vertices = [
+      -0.5, -0.5, 0.0,
+      0.5, -0.5, 0.0,
+      0.0, 0.5, 0.0
+    ];
+    let geometry = new THREE.BufferGeometry;
+    geometry.setAttribute('position',
+      new THREE.Float32BufferAttribute(vertices, 3));
     let mesh = new THREE.Mesh(geometry, shaderMaterial);
     mesh.frustumCulled = false;
     scene.add(mesh);
